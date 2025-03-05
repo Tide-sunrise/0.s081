@@ -5,7 +5,7 @@
 #include "user.h"
 
 
-char *basename(char *pathname) {
+char *basename(char *pathname) {//获取到/后的（包含/）字符串
     char *prev = 0;
     char *curr = strchr(pathname, '/');
     while (curr != 0) {
@@ -35,7 +35,7 @@ void find(char a[],char b[]){
         case T_FILE:
             char *f_name = basename(a);
             int match = 1;
-            if(f_name == 0 || strcmp(f_name + 1, b) != 0){
+            if(f_name == 0 || strcmp(f_name + 1, b) != 0){//排除/导致不一致的情况
                 match=0;
             }
             if(match){

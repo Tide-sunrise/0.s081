@@ -39,12 +39,12 @@ int main(int argc, char *argv[]){
                 if(!stdin_end){
                     close(0);
                 }
-                if(exec(argv[1],xargv)<0){
+                if(exec(xargv[0],xargv)<0){
                     fprintf(2, "xargs: exec fails with -1\n");
                     exit(1);
                 }
             }else{
-                memmove(buf, line_end + 1, occupy - (line_end - buf) - 1);
+                memmove(buf, line_end + 1, occupy - (line_end - buf + 1));
                 // 更新缓冲区中已占用的字节数
                 occupy -= line_end - buf + 1;
                 // 将缓冲区剩余部分清零
